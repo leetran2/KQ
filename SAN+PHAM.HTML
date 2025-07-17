@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dữ liệu sản phẩm từ Google Sheets</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Danh sách sản phẩm từ AppSheet (Google Sheets)</h2>
+
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>ID_SP</th>
+        <th>Tên SP</th>
+        <th>Hàm lượng vàng</th>
+        <th>TKL</th>
+        <th>Khối lượng hột</th>
+        <th>TLV</th>
+        <th>ĐVT</th>
+        <th>ID_TENCT</th>
+        <th>Tiền công</th>
+        <th>QR</th>
+        <th>Ngày tạo</th>
+        <th>Người tạo</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    fetch("https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLiy99-mf8uxMOpl4EXAa8UDX1fDmsEN1_tnzhr7TiHAFV27X5CnKOtnk_tL6euo9YJmVY8e8PlzZhxrn7w4J-KvDr0a0UJ0JZOlQoxsTnRAl8vX3ZD60_lNvyypbNJxyLBd7-xe9m6VGdVN6VQRnpQrIlhDRaERTA7FOxUx6QwIDURY4L_m3Ln_OpA16DPOcwiY5NAA-UiGXRU2hEkQhjmJduNgnjyNmscFOnUYCtUAkt7zdsyLjjfYAqPf95WkeIC3iPRbqMEVop-kyIXFy566ICXcwz03qrsL46Tv&lib=MhOuo5n57tcuUpsUsFGOqMIt-t3R3Us5_")
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.querySelector("#data-table tbody");
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${row.id_sp}</td>
+            <td>${row.ten_sp}</td>
+            <td>${row.ham_luong_vang}</td>
+            <td>${row.tkl}</td>
+            <td>${row.khoi_luong_hot}</td>
+            <td>${row.tlv}</td>
+            <td>${row.dvt}</td>
+            <td>${row.id_tenct}</td>
+            <td>${row.tien_cong}</td>
+            <td><a href="${row.qr}" target="_blank">Link</a></td>
+            <td>${row.ngay_tao}</td>
+            <td>${row.nguoi_tao}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(error => {
+        console.error("Lỗi khi lấy dữ liệu:", error);
+      });
+  </script>
+
+</body>
+</html>
