@@ -8,168 +8,158 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #f5f5f5;
         }
         
         .jewelry-tag {
-            width: 94.5px; /* 2.5cm */
+            width: 226.8px; /* 6cm */
             height: 45.3px; /* 1.2cm */
             background-color: white;
             border: 1px solid #333;
             border-radius: 3px;
-            padding: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 2px;
+            box-sizing: border-box;
             position: relative;
-            margin: 20px auto;
-            display: block;
-        }
-        
-        .jewelry-tag.tag1 {
-            display: block;
-        }
-        
-        .jewelry-tag.tag2 {
-            display: block;
-            position: relative;
-        }
-        
-        .info-section {
-            font-size: 6px;
-            line-height: 1.1;
-            color: #333;
-            width: 100%;
-        }
-        
-        .tag2 .info-section {
-            padding-right: 18px;
-        }
-        
-        .qr-section {
-            width: 15px;
-            height: 15px;
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
+            margin: 10px auto;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
         }
         
-        .qr-code {
-            width: 15px;
-            height: 15px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+        .column {
+            flex: 1;
+            padding: 1px;
+            font-size: 7px;
+            line-height: 1.1;
+        }
+        
+        .left-column {
+            width: 65%;
+            border-right: 1px dashed #ccc;
+        }
+        
+        .right-column {
+            width: 35%;
         }
         
         .row {
             margin-bottom: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex;
+            justify-content: space-between;
         }
         
-        .row:last-child {
-            margin-bottom: 0;
+        .left-item {
+            width: 48%;
+            text-align: left;
         }
         
-        .price {
-            font-weight: bold;
-            font-size: 5px;
-            color: #d32f2f;
+        .right-item {
+            width: 48%;
+            text-align: right;
         }
         
         .hole {
             position: absolute;
-            top: -4px;
+            top: -3px;
             left: 8px;
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             background-color: white;
             border: 1px solid #333;
             border-radius: 50%;
         }
+        
+        .qr-code {
+            width: 12px;
+            height: 12px;
+            background-color: #eee;
+            border: 1px solid #ddd;
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+        }
     </style>
 </head>
 <body>
-    <div class="jewelry-tag tag1">
+    <div class="jewelry-tag">
         <div class="hole"></div>
-        <div class="info-section">
-            <div class="row"><strong id="product-name">[TEN_SP]</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>KLH:</strong><span id="klh">[KLH]</span></div>
-            <div class="row"><strong>TKL:</strong><span id="tkl">[TKL]</span>&nbsp;<span id="unit">[DVT]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>HLV:</strong><span id="hlv">[HLV]</span></div>
-            <div class="row"><strong>KLV:</strong><span id="tlv">[TLV]</span>&nbsp;<span id="unit2">[DVT]</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>KH:</strong><span id="kh">[KH]</span></div>
-            <div class="row"><strong>Công:</strong><span id="tien-cong">[TIEN_CONG]</span></div>
-            <div class="row"><strong>Xuất xứ:</strong> Việt Nam</div>
+        <div class="column left-column">
+            <div class="row">
+                <span class="left-item"><strong id="product-name">[TEN_SP]</strong></span>
+                <span class="center-item">TKL: <span id="tkl">[TKL]</span> <span id="[DVT]">[DVT]</span></span>
+            </div>
+            <div class="row">
+                <span class="left-item">KLH: <span id="klh">[KLH]</span></span>
+                <span class="center-item">HLV: <span id="hlv">[HLV]</span></span>
+            </div>
+            <div class="row">
+                <span class="left-item">KLV: <span id="tlv">[TLV]</span> <span id="[DVT]">[DVT]</span></span>
+                <span class="center-item">KH: <span id="kh">[KH]</span></span>
+            </div>
+            <div class="row">Công: <span id="tien-cong">[TIEN_CONG]</span></div>
+            <div class="row">Xuất xứ: Việt Nam</div>
         </div>
-    </div>
-
-    <!-- Second tag with different information -->
-    <div class="jewelry-tag tag2">
-        <div class="hole"></div>
-        <div class="info-section">
-            <div class="row"><strong>NSX:</strong> DNTN KIM QUANG 1</div>
-            <div class="row"><strong>ĐC:</strong> 83 Phạm Văn Chiêu,</div>
-            <div class="row">Phường 2, TP Tây Ninh</div>
-            <div class="row"><strong>TCCS01:</strong> 2017/KQ1</div>
-            <div class="row"><strong>MKH:</strong> KQ1&nbsp;<span id="hlv2">[HLV]</span></div>
+        <div class="column right-column">
+            <div class="row">NSX: DNTN KIM QUANG 1</div>
+            <div class="row">ĐC: 83 Phạm Văn Chiêu</div>
+            <div class="row">P.2, TP Tây Ninh</div>
+            <div class="row">TCCS01: 2017/KQ1</div>
+            <div class="row">MKH: KQ1<span id="hlv">[HLV]</span>
         </div>
-        <div class="qr-section">
-            <div class="qr-code" id="qr-code"></div>
-        </div>
+        <div class="qr-code" id="qr-code"></div>
     </div>
 
     <script>
-        // Function to get URL parameters
-        function getUrlParams() {
+        // Function to parse URL parameters
+        function getParams() {
             const params = {};
-            const queryString = window.location.search.substring(1);
-            const pairs = queryString.split('&');
+            const query = window.location.search.substring(1);
+            const pairs = query.split('&');
             
-            for (let i = 0; i < pairs.length; i++) {
-                const pair = pairs[i].split('=');
-                params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-            }
+            pairs.forEach(pair => {
+                const [key, value] = pair.split('=');
+                if (key && value) {
+                    params[key] = decodeURIComponent(value.replace(/\+/g, ' '));
+                }
+            });
             
             return params;
         }
 
-        // Function to populate data from URL parameters
+        // Populate data from URL parameters
         function populateData() {
-            const params = getUrlParams();
+            const params = getParams();
             
             // Map parameters to fields
-            if (params.TEN_SP) document.getElementById('product-name').textContent = params.TEN_SP;
-            if (params.KLH) document.getElementById('klh').textContent = params.KLH;
-            if (params.TKL) document.getElementById('tkl').textContent = params.TKL;
-            if (params.HLV) {
-                document.getElementById('hlv').textContent = params.HLV;
-                document.getElementById('hlv2').textContent = params.HLV;
-            }
-            if (params.TLV) document.getElementById('tlv').textContent = params.TLV;
-            if (params.KH) document.getElementById('kh').textContent = params.KH;
-            if (params.TIEN_CONG) document.getElementById('tien-cong').textContent = params.TIEN_CONG;
-            if (params.DVT) {
-                document.getElementById('unit').textContent = params.DVT;
-                document.getElementById('unit2').textContent = params.DVT;
-            }
+            const fields = {
+                'product-name': 'TEN_SP',
+                'klh': 'KLH',
+                'tkl': 'TKL',
+                'tlv': 'TLV',
+                'tien-cong': 'TIEN_CONG',
+                '[DVT]': 'DVT',
+                'hlv': 'HLV',
+                'kh': 'KH'
+            };
             
-            // Generate QR code if ID_SP is available
+            Object.entries(fields).forEach(([id, param]) => {
+                if (params[param]) {
+                    document.getElementById(id).textContent = params[param];
+                }
+            });
+            
+            // Generate QR code if ID exists
             if (params.ID_SP) {
-                generateQRCode(params.ID_SP);
+                document.getElementById('qr-code').style.backgroundImage = 
+                    `url('https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=${encodeURIComponent(params.ID_SP)}')`;
             }
-        }
-
-        // Function to generate QR code
-        function generateQRCode(data) {
-            // In a real implementation, you would use a QR code library here
-            // For demo purposes, we'll just show a placeholder
-            const qrCodeElement = document.getElementById('qr-code');
-            qrCodeElement.style.backgroundImage = `url('https://api.qrserver.com/v1/create-qr-code/?size=50x50&data=${encodeURIComponent(data)}')`;
         }
         
-        // Call functions when page loads
-        window.onload = function() {
-            populateData();
-        };
+        // Run when page loads
+        window.onload = populateData;
     </script>
 </body>
 </html>
