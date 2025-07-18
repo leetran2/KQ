@@ -3,513 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Máy In Label Sản Phẩm</title>
+    <title>Tem Nhẫn Vàng</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
+            margin: 0;
             padding: 20px;
+            background-color: #f5f5f5;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .input-section {
-            padding: 20px;
-            border-bottom: 2px solid #eee;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-            margin-left: 10px;
-        }
-
-        .btn-danger {
-            background: #dc3545;
-        }
-
-        .preview-section {
-            padding: 20px;
-        }
-
-        .labels-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .label-item {
-            border: 2px solid #333;
-            padding: 15px;
-            background: white;
-            position: relative;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .label-header {
-            text-align: center;
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 5px;
-        }
-
-        .label-content {
-            flex: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .label-left {
-            flex: 1;
-        }
-
-        .label-right {
-            text-align: right;
-            font-weight: bold;
-        }
-
-        .barcode-area {
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .barcode-placeholder {
-            width: 120px;
-            height: 40px;
+        
+        .jewelry-tag {
+            width: 94.5px; /* 2.5cm */
+            height: 45.3px; /* 1.2cm */
+            background-color: white;
             border: 1px solid #333;
-            display: inline-block;
-            background: repeating-linear-gradient(
-                90deg,
-                #000,
-                #000 1px,
-                transparent 1px,
-                transparent 3px
-            );
-            margin: 5px 0;
+            border-radius: 3px;
+            padding: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: relative;
+            margin: 20px auto;
+            display: block;
         }
-
-        .label-info {
-            font-size: 12px;
-            line-height: 1.4;
+        
+        .jewelry-tag.tag1 {
+            display: block;
         }
-
-        .price {
-            color: #dc3545;
-            font-size: 16px;
-            font-weight: bold;
+        
+        .jewelry-tag.tag2 {
+            display: block;
+            position: relative;
         }
-
-        .product-list {
-            margin-top: 20px;
+        
+        .info-section {
+            font-size: 6px;
+            line-height: 1.1;
+            color: #333;
+            width: 100%;
         }
-
-        .product-item {
-            background: #f8f9fa;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
+        
+        .tag2 .info-section {
+            padding-right: 18px;
+        }
+        
+        .qr-section {
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
         }
-
-        .product-info {
-            flex: 1;
+        
+        .qr-code {
+            width: 15px;
+            height: 15px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSIyIiB5PSIyIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjYiIHk9IjYiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjM2IiB5PSIyIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjM4IiB5PSI0IiB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSI0MCIgeT0iNiIgd2lkdGg9IjQiIGhlaWdodD0iNCIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMiIgeT0iMzYiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iNCIgeT0iMzgiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjYiIHk9IjQwIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIxNiIgeT0iMiIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMjAiIHk9IjIiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjI0IiB5PSIyIiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIzMCIgeT0iMiIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMTYiIHk9IjE2IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIyMCIgeT0iMTYiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjI0IiB5PSIxNiIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMzAiIHk9IjE2IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIxOCIgeT0iMjAiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjI2IiB5PSIyMCIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMzIiIHk9IjIwIiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIxNiIgeT0iMzAiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjI0IiB5PSIzMCIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMzAiIHk9IjMwIiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIzNiIgeT0iMzAiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjIwIiB5PSIzNCIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMjgiIHk9IjM0IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIzNCIgeT0iMzQiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjE4IiB5PSIzOCIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMjYiIHk9IjM4IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIzMiIgeT0iMzgiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjQ0IiB5PSIzOCIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iMjIiIHk9IjQ0IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8cmVjdCB4PSIzMCIgeT0iNDQiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9ImJsYWNrIi8+CjxyZWN0IHg9IjM4IiB5PSI0NCIgd2lkdGg9IjIiIGhlaWdodD0iMiIgZmlsbD0iYmxhY2siLz4KPHJlY3QgeD0iNDYiIHk9IjQ0IiB3aWR0aD0iMiIgaGVpZ2h0PSIyIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
-
-        .product-actions {
-            display: flex;
-            gap: 10px;
+        
+        .row {
+            margin-bottom: 1px;
         }
-
-        .btn-small {
-            padding: 5px 10px;
-            font-size: 12px;
+        
+        .row:last-child {
+            margin-bottom: 0;
         }
-
-        @media print {
-            body {
-                background: white;
-                margin: 0;
-                padding: 0;
-            }
-
-            .container {
-                box-shadow: none;
-                border-radius: 0;
-            }
-
-            .header, .input-section {
-                display: none;
-            }
-
-            .labels-container {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-            }
-
-            .label-item {
-                break-inside: avoid;
-                page-break-inside: avoid;
-                margin-bottom: 10px;
-            }
+        
+        .price {
+            font-weight: bold;
+            font-size: 5px;
+            color: #d32f2f;
         }
-
-        .data-input {
-            margin-bottom: 20px;
-        }
-
-        .sample-data {
-            background: #e9ecef;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            margin-bottom: 10px;
+        
+        .hole {
+            position: absolute;
+            top: -4px;
+            left: 8px;
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border: 1px solid #333;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🏷️ Máy In Label Sản Phẩm</h1>
-            <p>Tạo và in label sản phẩm chuyên nghiệp</p>
+    <div class="jewelry-tag tag1">
+        <div class="hole"></div>
+        <div class="info-section">
+            <div class="row"><strong> Nhẫn kiều </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>KLH:</strong>0,0 ly</div>
+            <div class="row"><strong>TKL:</strong> 8,58 phân&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>HLV:</strong> 980</div>
+            <div class="row"><strong>KLV:</strong> 9,58 phânn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>KH:</strong></div>
+            <div class="row"><strong>Công:</strong> 250 000 VNĐ</div>
+            <div class="row"><strong>Xuất xứ:</strong> Việt Nam</div>
         </div>
+    </div>
 
-        <div class="input-section">
-            <h2>Thêm Sản Phẩm</h2>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="productId">ID Sản Phẩm:</label>
-                    <input type="text" id="productId" placeholder="VD: SP-2507001">
-                </div>
-                
-                <div class="form-group">
-                    <label for="productName">Tên Sản Phẩm:</label>
-                    <input type="text" id="productName" placeholder="VD: Dây">
-                </div>
-                
-                <div class="form-group">
-                    <label for="weight">Trọng Lượng:</label>
-                    <input type="number" id="weight" placeholder="VD: 630" step="0.01">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="length">Chiều Dài:</label>
-                    <input type="number" id="length" placeholder="VD: 5.24" step="0.01">
-                </div>
-                
-                <div class="form-group">
-                    <label for="quantity">Số Lượng:</label>
-                    <input type="number" id="quantity" placeholder="VD: 0" step="1">
-                </div>
-                
-                <div class="form-group">
-                    <label for="unit">Đơn Vị:</label>
-                    <select id="unit">
-                        <option value="CHỈ">CHỈ</option>
-                        <option value="PHÂN">PHÂN</option>
-                        <option value="KG">KG</option>
-                        <option value="M">M</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="price">Giá Bán:</label>
-                    <input type="number" id="price" placeholder="VD: 500000" step="1000">
-                </div>
-                
-                <div class="form-group">
-                    <label for="creator">Người Tạo:</label>
-                    <input type="text" id="creator" placeholder="VD: lytran2702@gmail.com">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <button class="btn" onclick="addProduct()">➕ Thêm Sản Phẩm</button>
-                <button class="btn btn-secondary" onclick="clearForm()">🗑️ Xóa Form</button>
-            </div>
-
-            <div class="data-input">
-                <h3>Hoặc Nhập Dữ Liệu Hàng Loạt</h3>
-                <div class="sample-data">
-                    <strong>Định dạng:</strong> ID_SP,TEN_SP,TRONG_LUONG,CHIEU_DAI,SO_LUONG,DON_VI,GIA_BAN,NGUOI_TAO<br>
-                    <strong>Ví dụ:</strong> SP-2507001,Dây,630,5.24,0,CHỈ,500000,lytran2702@gmail.com
-                </div>
-                <textarea id="bulkData" rows="5" placeholder="Nhập dữ liệu theo định dạng trên, mỗi sản phẩm một dòng"></textarea>
-                <button class="btn" onclick="processBulkData()">📥 Xử Lý Dữ Liệu Hàng Loạt</button>
-            </div>
-
-            <div class="product-list" id="productList">
-                <h3>Danh Sách Sản Phẩm (<span id="productCount">0</span>)</h3>
-            </div>
+    <!-- Tem thứ hai với thông tin khác -->
+    <div class="jewelry-tag tag2">
+        <div class="hole"></div>
+        <div class="info-section">
+            <div class="row"><strong>NSX:</strong> DNTN KIM QUANG 1</div>
+            <div class="row"><strong>ĐC:</strong> 83 Phạm Văn Chiêu,</div>
+            <div class="row">Phường 2, TP Tây Ninh</div>
+            <div class="row"><strong>TCCS01:</strong> 2017/KQ1</div>
+            <div class="row"><strong>MKH:</strong> KQ1 980</div>
         </div>
-
-        <div class="preview-section">
-            <h2>Xem Trước Label</h2>
-            <button class="btn" onclick="printLabels()">🖨️ In Label</button>
-            <button class="btn btn-secondary" onclick="clearAllProducts()">🗑️ Xóa Tất Cả</button>
-            
-            <div class="labels-container" id="labelsContainer">
-                <!-- Labels sẽ được tạo ở đây -->
-            </div>
+        <div class="qr-section">
+            <div class="qr-code"></div>
         </div>
     </div>
 
     <script>
-        let products = [];
-
-        function addProduct() {
-            const product = {
-                id: document.getElementById('productId').value,
-                name: document.getElementById('productName').value,
-                weight: parseFloat(document.getElementById('weight').value) || 0,
-                length: parseFloat(document.getElementById('length').value) || 0,
-                quantity: parseInt(document.getElementById('quantity').value) || 0,
-                unit: document.getElementById('unit').value,
-                price: parseInt(document.getElementById('price').value) || 0,
-                creator: document.getElementById('creator').value
-            };
-
-            if (!product.id || !product.name) {
-                alert('Vui lòng nhập ID và tên sản phẩm!');
-                return;
-            }
-
-            products.push(product);
-            updateProductList();
-            updateLabels();
-            clearForm();
+        // Tạo QR code thực tế (sử dụng thư viện QR code)
+        // Bạn có thể thay thế bằng thư viện QR code thực tế như qrcode.js
+        function generateQRCode() {
+            console.log('QR Code generated for jewelry tag');
+            // Có thể thêm logic tạo QR code động tại đây
         }
-
-        function processBulkData() {
-            const bulkData = document.getElementById('bulkData').value.trim();
-            if (!bulkData) {
-                alert('Vui lòng nhập dữ liệu!');
-                return;
-            }
-
-            const lines = bulkData.split('\n');
-            let addedCount = 0;
-
-            lines.forEach(line => {
-                const parts = line.split(',');
-                if (parts.length >= 8) {
-                    const product = {
-                        id: parts[0].trim(),
-                        name: parts[1].trim(),
-                        weight: parseFloat(parts[2]) || 0,
-                        length: parseFloat(parts[3]) || 0,
-                        quantity: parseInt(parts[4]) || 0,
-                        unit: parts[5].trim(),
-                        price: parseInt(parts[6]) || 0,
-                        creator: parts[7].trim()
-                    };
-
-                    if (product.id && product.name) {
-                        products.push(product);
-                        addedCount++;
-                    }
-                }
-            });
-
-            if (addedCount > 0) {
-                updateProductList();
-                updateLabels();
-                document.getElementById('bulkData').value = '';
-                alert(`Đã thêm ${addedCount} sản phẩm!`);
-            } else {
-                alert('Không có sản phẩm nào được thêm. Vui lòng kiểm tra định dạng dữ liệu!');
-            }
-        }
-
-        function clearForm() {
-            document.getElementById('productId').value = '';
-            document.getElementById('productName').value = '';
-            document.getElementById('weight').value = '';
-            document.getElementById('length').value = '';
-            document.getElementById('quantity').value = '';
-            document.getElementById('unit').value = 'CHỈ';
-            document.getElementById('price').value = '';
-            document.getElementById('creator').value = '';
-        }
-
-        function removeProduct(index) {
-            products.splice(index, 1);
-            updateProductList();
-            updateLabels();
-        }
-
-        function clearAllProducts() {
-            products = [];
-            updateProductList();
-            updateLabels();
-        }
-
-        function updateProductList() {
-            const productList = document.getElementById('productList');
-            const productCount = document.getElementById('productCount');
-            
-            productCount.textContent = products.length;
-            
-            if (products.length === 0) {
-                productList.innerHTML = '<h3>Danh Sách Sản Phẩm (0)</h3><p>Chưa có sản phẩm nào.</p>';
-                return;
-            }
-
-            let html = '<h3>Danh Sách Sản Phẩm (' + products.length + ')</h3>';
-            products.forEach((product, index) => {
-                html += `
-                    <div class="product-item">
-                        <div class="product-info">
-                            <strong>${product.id}</strong> - ${product.name} 
-                            (${product.weight}g, ${product.length}, ${product.quantity} ${product.unit})
-                            <br><span style="color: #dc3545; font-weight: bold;">${formatPrice(product.price)} VND</span>
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn btn-danger btn-small" onclick="removeProduct(${index})">Xóa</button>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            productList.innerHTML = html;
-        }
-
-        function updateLabels() {
-            const labelsContainer = document.getElementById('labelsContainer');
-            
-            if (products.length === 0) {
-                labelsContainer.innerHTML = '<p>Chưa có sản phẩm nào để tạo label.</p>';
-                return;
-            }
-
-            let html = '';
-            products.forEach(product => {
-                html += `
-                    <div class="label-item">
-                        <div class="label-header">
-                            CTY TNHH TMDV<br>
-                            VÀNG THIÊN TẠO
-                        </div>
-                        
-                        <div class="label-content">
-                            <div class="label-left">
-                                <div class="label-info">
-                                    <strong>NHÃN</strong><br>
-                                    TKL: ${product.id}<br>
-                                    KLN: ${product.length}<br>
-                                    KLV: ${product.weight}<br>
-                                    TC: ${formatPrice(product.price)} VND
-                                </div>
-                            </div>
-                            
-                            <div class="label-right">
-                                <div class="barcode-area">
-                                    <div class="barcode-placeholder"></div>
-                                </div>
-                                <div class="price">${formatPrice(product.price)} VND</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            labelsContainer.innerHTML = html;
-        }
-
-        function formatPrice(price) {
-            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-
-        function printLabels() {
-            if (products.length === 0) {
-                alert('Chưa có sản phẩm nào để in!');
-                return;
-            }
-            
-            window.print();
-        }
-
-        // Khởi tạo
-        updateProductList();
-        updateLabels();
+        
+        // Gọi hàm khi trang load
+        window.onload = function() {
+            generateQRCode();
+        };
     </script>
 </body>
 </html>
